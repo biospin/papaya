@@ -7,9 +7,17 @@ from models import Greeting
 # https://cloud.google.com/appengine/docs/python/datastore/datamodeling
 # DB datastore model 적용
 
+# https://cloud.google.com/appengine/docs/python/ndb
+# NDB 적용 (entity 개념을 적용해서 'N'DB 인가?;)
+# NDB 의 장점은 위 링크의 첫번째 단락을 읽어보면 된다.
+
+# DB => NDB cheetsheet
+# https://docs.google.com/document/d/1AefylbadN456_Z7BZOpZEXDq8cR8LYu7QgI7bt5V0Iw/edit?ndplr=1&pli=1
+
+
 
 def all_greetings(request):
-    greetings = Greeting.all()  # objects.all => all
+    greetings = Greeting.query(Greeting.name == 'eee')  # objects.all => all => query
     res = "<h3> GREETINGS </h3>"
 
     # 인사말 라인단위 출력
