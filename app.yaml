@@ -4,12 +4,11 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-libraries:
-- name: django
-  version: "latest"
+handlers:
 
-builtins:
-- django_wsgi: on
+- url: /_ah/(mapreduce|queue|warmup).*
+  script: puredj.wsgi.application
+  login: admin
 
-env_variables:
-  DJANGO_SETTINGS_MODULE: 'puredj.settings'
+- url: /.*
+  script: puredj.wsgi.application
