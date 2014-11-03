@@ -17,7 +17,7 @@ from models import Greeting
 
 
 def all_greetings(request):
-    greetings = Greeting.query(Greeting.name == 'eee')  # objects.all => all => query
+    greetings = Greeting.query()  # objects.all => all => query
     res = "<h3> GREETINGS </h3>"
 
     # 인사말 라인단위 출력
