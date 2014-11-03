@@ -1,9 +1,15 @@
-from django.db import models
+# -*- coding: utf-8 -*-
+# from django.db import models
+from google.appengine.ext import db
 
 
-class Greeting(models.Model):
-    name = models.CharField(max_length=30)
-    message = models.CharField(max_length=150)
+# https://cloud.google.com/appengine/docs/python/datastore/datamodeling
+# DB datastore model 적용
+
+
+class Greeting(db.Model):
+    name = db.StringProperty(required=True)  # CharField => StringProperty
+    message = db.StringProperty(required=True)
 
     def __unicode__(self):
         return "%s  by %s" % (self.message, self.name)

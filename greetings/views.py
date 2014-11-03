@@ -4,13 +4,17 @@ from django.http import HttpResponse
 from models import Greeting
 
 
+# https://cloud.google.com/appengine/docs/python/datastore/datamodeling
+# DB datastore model 적용
+
+
 def all_greetings(request):
-    greetings = Greeting.objects.all()
+    greetings = Greeting.all()  # objects.all => all
     res = "<h3> GREETINGS </h3>"
 
     # 인사말 라인단위 출력
     for i in greetings:
-        res += str(i)
+        res += unicode(i)
         res += "<br>"
 
     # 새 인사말 페이지 링크
@@ -33,9 +37,11 @@ def new_greeting(request):
 
     # 새 인사말 등록 및 전체 페이지로 이동
     elif request.method == "POST":
-        greeting = Greeting()
-        greeting.message = request.POST["message"]
-        greeting.name = request.POST["name"]
 
-        greeting.save()
-        return redirect('/greetings')
+        message = request.POST["message"]
+        name = request.POST["name"]
+
+        greeting = Greeting(message=message, name=name)
+
+        greeting.put()  # save => put
+        return redirect('/greetings')  # WTF! new greeting delayed!
