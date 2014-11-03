@@ -57,14 +57,14 @@ WSGI_APPLICATION = 'puredj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'NAME': 'djtest',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'djuser',
-        'PASSWORD': '1234',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'NAME': 'djtest',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'USER': 'djuser',
+#         'PASSWORD': '1234',
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
