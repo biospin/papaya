@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^greetings/', include('greetings.urls')),
+    url(r'^_ah/', include('djangae.urls')),
 )
